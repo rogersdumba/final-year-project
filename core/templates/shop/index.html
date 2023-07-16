@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header text-center">Dumba shop while it lasts</div>
+    <div class="card-body">
+        {% if products %}
+            <div class="row d-flex">
+                {% for product in products %}
+                <div class="card col-3 mx-2">
+                    <img class="rounded m-2" src="{{ MEDIA_URL }}{{ product.image }}">
+                    <p class="mx-2">
+                    <span class="fw-bold my-0">{{ product.name }}</span><br>
+                    <span class="fw-normal py-0">{{ product.price }}</span><br>
+                    <span>{{ product.pick_up_locations }} | <span class="text-muted">posted on {{ product.date_posted }}</span></span></p>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>there are currently no products in our database</p>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock content %}
